@@ -15,7 +15,7 @@ class AbsolventiControllerTriedyForm extends JControllerForm
 	}
 
 	public function save($key = null, $urlVar = null){
-		// print_r($this);
+		print_r($this);
 		$file = $this->input->files->get('jform')['tablo_url'];
 		$form = $this->input->post->get('jform', array(), 'array');
 		//pridanie nazvu suboru do zapisu
@@ -32,8 +32,7 @@ class AbsolventiControllerTriedyForm extends JControllerForm
 	}
 
 	function upload($file){
-		$uploadPath = JPATH_ROOT .DS. 'images' .DS. 'tablo' .DS. $file['name'];
-
+		$uploadPath = JPATH_ROOT .DS. 'images' .DS. 'phocagallery'.DS.'tabla' .DS. $file['name'];
 		if(!JFile::upload($file['tmp_name'], $uploadPath)){
 			
         	return False;
@@ -48,12 +47,16 @@ class AbsolventiControllerTriedyForm extends JControllerForm
 
 	public function edit($key = null, $urlVar = null){
 		$input = $this->input->post->get('trieda_id', 0, 'int');
-		$file = $this->input->files->get('jform')['tablo_url']['name'];
+		$file = $this->input->files->get('jform')['tablo_url'];
 		$form = $this->input->post->get('jform', array(), 'array');
+		if(!$this->upload($file)){
+			echo JText::_( 'ERROR MOVING FILE' );
+		}
 		if($file){
 			$this->input->post->set('jform', array_merge($form, array('tablo_url' => $file)));
 		}
 		$table = $this->getModel()->getTable();
+		
 		$table->load($input);
 		$table->bind($this->input->post->get('jform', array(), 'array'));
 		$table->store();

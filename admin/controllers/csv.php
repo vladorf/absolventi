@@ -23,6 +23,7 @@ class AbsolventiControllerCsv extends JControllerAdmin
 		$form = $this->input->post->get('jform', array(), 'array')['table'];
 		$file = $this->input->files->get('jform')['csv']['tmp_name'];
 		$model = $this->getModel($form.'Admin', 'AbsolventiModel');
+		$trieda = $this->input->post->get('jform', array(), 'array')['trieda_id'];
 		$form1 = $model->getForm();
 		$handle = fopen($file, "r");
     	while(($data = fgetcsv($handle, 1000, ",")) !== FALSE){
@@ -31,9 +32,12 @@ class AbsolventiControllerCsv extends JControllerAdmin
     			next($data);
     		}
     		$table = $model->getTable();
-    		
+    		$pff['trieda'] = $trieda;
     		$table->save($pff);
     		// echo $table->id;
     	}
+	
+		$this->setRedirect('index.php?option=com_absolventi', 'Done');
+		$this->redirect;
 	}
 }

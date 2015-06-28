@@ -15,13 +15,12 @@ class AbsolventiController extends JControllerLegacy
 			->from('#__absolventi_ziaci as zc')
 			->join('INNER', '#__absolventi_triedy as tr ON tr.id = zc.trieda')
 			->join('INNER', '#__absolventi_ucitelia as uc ON uc.id = tr.triedny')
-			->where('zc.meno LIKE "%'.$jform['name'].'%" or zc.priezvisko LIKE "%'.$jform['name'].'%"');
+			->where('(zc.meno LIKE "%'.$jform['name'].'%" OR zc.priezvisko LIKE "%'.$jform['name'].'%")');
 
         if ($jform['ucitel']) $query->where('uc.id = '.$jform['ucitel']);
         if ($jform['rok_nastupu']) $query->where('tr.rok_nastupu = '.$jform['rok_nastupu']);
-        if ($jform['rok_vystupu']) $query->where('tr.rok_vystupu = '.$jform['rok_vystpup']);
-        if ($jform['trieda']) $query->where('tr.trieda = '.$jform['trieda']);
-
+        if ($jform['rok_vystupu']) $query->where('tr.rok_vystupu = '.$jform['rok_vystupu']);
+        if ($jform['trieda']) $query->where('tr.trieda = \''.$jform['trieda'].'\'');
 		$db->setQuery($query);
 		$db->query();
         

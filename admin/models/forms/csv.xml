@@ -10,8 +10,8 @@
   		type="sql"
   		showon="table:#__absolventi_ziaci"
   		label="Vyberte do ktorej triedy chcete vkladat " 
-  		query="SELECT CONCAT(rok_nastupu, ' ', trieda), id FROM #__absolventi_triedy"
+  		query="SELECT CONCAT(rok_vystupu, ' ', trieda), id FROM #__absolventi_triedy"
   		key_field="id" 
-  		value_field="CONCAT(rok_nastupu, ' ', trieda)" />
+  		value_field="CONCAT(rok_vystupu, ' ', trieda)" />
 	<field name="csv" type="file" label="Vlozte csv" />
 </form>
