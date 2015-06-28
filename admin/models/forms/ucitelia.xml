@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<field name="meno" type="text" label="Zadajte meno ucitela" description=""/>
+	<field name="priezvisko" type="text" label="Zadajte priezvisko ucitela" description=""/>
+	<field name="trieda" type="hidden" default="0" />
+</form>

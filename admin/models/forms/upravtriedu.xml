@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<field name="rok_nastupu" type="integer" label="Vyberte rok nastupu" default="2015" first="1700" last="2100" step="1" />
+	<field name="rok_vystupu" type="integer" label="Vyberte rok vystupu" default="2015" first="1700" last="2100" step="1" />
+	<field name="trieda" type="text" label="Zadajte pismeno z triedy" default="a" description="" maxlength="1" />
+	<field name="triedny" type="sql" default="10" label="Vyberte ucitela" query="SELECT concat(meno, ' ',priezvisko), id FROM #__absolventi_ucitelia" key_field="id" value_field="concat(meno, ' ',priezvisko)"/>
+	<field name="tablo_url" type="file" label="Vlozte tablo" description="Choose an image from your computer with maximum 100KB" size="10" accept="image/*" />
+</form>

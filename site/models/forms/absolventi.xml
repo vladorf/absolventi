@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fieldset name="main">
+         <field 
+            type="text"
+            name="name"
+            label="Dynamicke vyhladavanie"
+            class="form-control"
+            />
+    </fieldset>
+  <fieldset name="filter">
+      <field
+        type="sql"
+        name="ucitel"
+        label="Ucitel"
+        query="SELECT CONCAT(meno, ' ', priezvisko), id FROM #__absolventi_ucitelia ORDER BY priezvisko"
+        key_field="id" 
+        value_field="CONCAT(meno, ' ', priezvisko)"
+        class="form-control filter">
+            <option value="">Vyberte ucitela</option>
+        </field>
+          
+      <field 
+        type="integer"
+        name="rok_nastupu" 
+        label="Vyberte rok nastupu" 
+        first="1700" 
+        last="2100" 
+        step="1"
+        class="form-control filter">
+            <option value="">Vyberte rok</option>
+        </field>
+        
+      <field 
+        type="integer"
+        name="rok_vystupu" 
+        label="Vyberte rok vystupu" 
+        first="1700" 
+        last="2100" 
+        step="1"
+        class="form-control filter">
+            <option value="">Vyberte rok</option>
+        </field>
+        
+      <field 
+        type="sql"
+        name="trieda"  
+        label="Zadajte pismeno z triedy" 
+        query="SELECT DISTINCT trieda FROM #__absolventi_triedy WHERE trieda IS NOT NULL ORDER BY trieda"
+        key_field="trieda" 
+        value_field="trieda"
+        class="form-control filter">
+            <option value="">Vyberte pismeno</option>
+        </field>
+    </fieldset>
+</form>
