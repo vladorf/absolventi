@@ -1,2 +1,1 @@
-- [ ] My uncompleted list item
-- [x] This one is already done
+- [ ] Vyse 4900 ziakov pri roku 1918
