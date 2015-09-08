@@ -1,1 +1,0 @@
-- [ ] Vyse 4900 ziakov pri roku 1918
